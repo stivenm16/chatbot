@@ -6,8 +6,8 @@ export default function Home() {
   const { messages, isLoading, products, addMessage } = useChat()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center ">
-      <div className="flex flex-col h-[35rem] bg-white rounded-xl">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-300 ">
+      <div className="flex flex-col h-[35rem] bg-white rounded-xl shadow-2xl">
         <Header />
         <ChatBody
           messages={messages}

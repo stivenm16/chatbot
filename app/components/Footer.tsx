@@ -42,7 +42,9 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
     <div className="flex flex-col relative items-center rounded-b-lg shadow-md border-t-2 border-t-gray-300">
       <div className="h-[90%] flex items-center justify-between py-2  w-full px-3">
         <div className="flex gap-4">
-          <EmojiIcon />
+          <div className="cursor-pointer">
+            <EmojiIcon />
+          </div>
           <input
             type="text"
             placeholder="Write a message..."
@@ -50,7 +52,7 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
             disabled={isLoading}
             onChange={handleTextChange}
             onKeyDown={handleKeyPress}
-            className="flex-1   rounded-lg focus:outline-none text-black text-[10px] "
+            className="flex-1 rounded-lg focus:outline-none text-black text-[10px] p-2 "
           />
         </div>
         <button

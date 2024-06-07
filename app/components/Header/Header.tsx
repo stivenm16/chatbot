@@ -6,11 +6,13 @@ export const Header = () => {
     <>
       <Wave>
         <div className="relative flex z-1  justify-between p-4">
-          <div className="flex  flex-col">
-            <div className="flex  items-center gap-2">
-              <UserIcon />
-              <div className="flex flex-col">
-                <span className="text-[10px]">Chat with </span>
+          <div className="flex  flex-col text-white">
+            <div className="flex  items-center gap-2 ">
+              <div className="cursor-pointer">
+                <UserIcon />
+              </div>
+              <div className="flex flex-col ">
+                <span className="text-[10px] ">Chat with </span>
                 <span className="font-semibold text-xs">[Chat Name]</span>
               </div>
             </div>
@@ -21,8 +23,12 @@ export const Header = () => {
           </div>
 
           <div className="flex space-x-4 justify-center items-center mb-5">
-            <CartIcon />
-            <ArrowDown />
+            <div className="cursor-pointer">
+              <CartIcon />
+            </div>
+            <div className="cursor-pointer">
+              <ArrowDown />
+            </div>
           </div>
         </div>
       </Wave>
