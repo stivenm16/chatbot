@@ -2,7 +2,7 @@ export const Wave = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className=" h-24 relative">
       <svg
-        className="absolute -top-5  left-0 w-full h-52"
+        className="absolute -top-5  left-0 w-full h-[12.5rem] "
         id="svg"
         viewBox="0 0 1240 690"
         xmlns="http://www.w3.org/2000/svg"
