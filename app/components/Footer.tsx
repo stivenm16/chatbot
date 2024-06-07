@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Message } from '../models'
+import { keywordChat } from '../utils'
 import { ArrowDown, EmojiIcon } from './icons'
 interface FooterProps {
   addMessage: (text: Message) => void
@@ -7,7 +8,6 @@ interface FooterProps {
 }
 export const Footer = ({ addMessage, isLoading }: FooterProps) => {
   const [message, setMessage] = useState<Message>()
-  const keyPhrase = 'I want product recommendations'
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage({
@@ -23,7 +23,7 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
   }
   const updateMessages = () => {
     if (message) {
-      if (message.text !== keyPhrase) {
+      if (message.text !== keywordChat) {
         addMessage(message)
         setMessage(undefined)
       } else {
@@ -56,9 +56,9 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
           <ArrowDown />
         </button>
       </div>
-      <div className="h-8 flex bg-gray-200 rounded-b-lg tracking-wide w-full justify-center text-[9px] text-gray-400 font-medium  items-center gap-2 text-sm">
-        <span className="underline">Powered By Wizybot</span>
-        <div className="h-5 w-5 rounded-full bg-gray-300"></div>
+      <div className="h-8 flex bg-gray-200 rounded-b-lg tracking-wide w-full justify-center  text-gray-400 font-medium  items-center gap-2 text-sm">
+        <span className="underline text-[9px]">Powered By Wizybot</span>
+        <div className="h-3 w-3 rounded-full bg-gray-300"></div>
       </div>
     </div>
   )

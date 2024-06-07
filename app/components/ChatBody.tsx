@@ -1,11 +1,12 @@
-import { Message } from '../models'
+import { Message, Product } from '../models'
+import { Carousel } from './Carousel'
 import { Dots } from './Dots'
 import { ChatBotAnswer, UserMessage } from './Messages'
 
 interface ChatBodyProps {
   messages: Message[]
-  products?: any[]
   isLoading: boolean
+  products: Product[]
 }
 export const ChatBody = ({ messages, isLoading, products }: ChatBodyProps) => {
   return (
@@ -22,7 +23,7 @@ export const ChatBody = ({ messages, isLoading, products }: ChatBodyProps) => {
               )}
               {message.text === 'carousel' && message.rol === undefined && (
                 <div className="text-black text-[10px]" key={index}>
-                  {products && products[1]?.id}
+                  {products && <Carousel products={products} />}
                 </div>
               )}
             </div>

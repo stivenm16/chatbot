@@ -19,3 +19,5 @@ export const fakeChatBotAnswers: Message[] = [
     rol: 'bot',
   },
 ]
+
+export const keywordChat = 'I want product recommendations'
