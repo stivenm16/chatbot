@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Message } from '../models'
-import { keywordChat } from '../utils'
+import { getFormattedDate, keywordChat } from '../utils'
 import { ArrowDown, EmojiIcon } from './icons'
 interface FooterProps {
   addMessage: (text: Message) => void
@@ -13,6 +13,7 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
     setMessage({
       text: e.target.value,
       rol: 'user',
+      date: getFormattedDate(),
     })
   }
 
@@ -30,6 +31,7 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
         addMessage({
           text: 'carousel',
           rol: undefined,
+          date: getFormattedDate(),
         })
       }
       setMessage(undefined)
@@ -38,17 +40,19 @@ export const Footer = ({ addMessage, isLoading }: FooterProps) => {
 
   return (
     <div className="flex flex-col relative items-center rounded-b-lg shadow-md border-t-2 border-t-gray-300">
-      <div className="h-[90%] flex items-center px-2 py-2">
-        <EmojiIcon />
-        <input
-          type="text"
-          placeholder="Write a message..."
-          value={message?.text || ''}
-          disabled={isLoading}
-          onChange={handleTextChange}
-          onKeyPress={handleKeyPress}
-          className="flex-1 p-2  rounded-lg focus:outline-none text-black text-sm "
-        />
+      <div className="h-[90%] flex items-center justify-between py-2  w-full px-3">
+        <div className="flex gap-4">
+          <EmojiIcon />
+          <input
+            type="text"
+            placeholder="Write a message..."
+            value={message?.text || ''}
+            disabled={isLoading}
+            onChange={handleTextChange}
+            onKeyDown={handleKeyPress}
+            className="flex-1   rounded-lg focus:outline-none text-black text-[10px] "
+          />
+        </div>
         <button
           className="rounded-full bg-indigo-950 h-6 w-6 flex flex-row justify-center items-center"
           onClick={updateMessages}

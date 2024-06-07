@@ -35,6 +35,7 @@ export const useCarousel = ({ products }: { products: Product[] }) => {
     ) {
       setCurrentIndex(currentIndex + 1)
     }
+    setTranslateX(0) // Reset translateX after dragging
   }
 
   useEffect(() => {

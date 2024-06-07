@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Message, Product } from '../models'
 import { fetchProducts } from '../services'
-import { fakeChatBotAnswers, keywordChat } from '../utils'
+import { fakeChatBotAnswers, getFormattedDate, keywordChat } from '../utils'
 
 export const useChat = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -14,7 +14,10 @@ export const useChat = () => {
   const chatBotAnswer = () => {
     const randomIndex = Math.floor(Math.random() * fakeChatBotAnswers.length)
     const randomAnswer = fakeChatBotAnswers[randomIndex]
-    setMessages((prevMessages) => [...prevMessages, randomAnswer])
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { ...randomAnswer, date: getFormattedDate() },
+    ])
   }
 
   const addMessage = (message: Message) => {
@@ -34,6 +37,7 @@ export const useChat = () => {
         {
           text: keywordChat,
           rol: 'user',
+          date: getFormattedDate(),
         },
         message,
       ])

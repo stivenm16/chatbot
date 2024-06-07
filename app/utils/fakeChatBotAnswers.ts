@@ -1,21 +1,24 @@
 import { Message } from '../models'
 
 export const fakeChatBotAnswers: Message[] = [
-  { text: 'lorem ipsum', rol: 'bot' },
   {
-    text: 'lorem ipsum2',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     rol: 'bot',
   },
   {
-    text: 'lorem ipsum3',
+    text: 'Nulla pretium rutrum sapien, vel faucibus mi porta non.  magnis dis',
     rol: 'bot',
   },
   {
-    text: 'lorem ipsum4',
+    text: 'Aliquam erat volutpat. Morbi convallis sed enim id pharetra.',
     rol: 'bot',
   },
   {
-    text: 'lorem ipsum5',
+    text: 'Quisque ullamcorper faucibus sapien, sit amet laoreet lectus commodo ut.',
+    rol: 'bot',
+  },
+  {
+    text: 'Curabitur vitae velit auctor, iaculis nunc quis, dignissim est.',
     rol: 'bot',
   },
 ]

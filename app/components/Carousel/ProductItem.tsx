@@ -11,7 +11,9 @@ export const ProductItem = ({ product }: { product: Product }) => {
       <div className="  overflow-hidden">
         <div className="p-4">
           <span className="text-[8px]">{product.displayTitle}</span>
-          <p className="text-gray-800 font-bold">{product.price}</p>
+          <p className="text-gray-800 font-bold">
+            ${product.price.split('USD')}
+          </p>
           <a href={product.url} target="_blank" rel="noopener noreferrer">
             <span className="underline text-[8px]">View Page</span>
           </a>
