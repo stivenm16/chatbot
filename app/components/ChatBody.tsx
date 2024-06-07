@@ -4,24 +4,29 @@ import { ChatBotAnswer, UserMessage } from './Messages'
 
 interface ChatBodyProps {
   messages: Message[]
+  products?: any[]
   isLoading: boolean
 }
-export const ChatBody = ({ messages, isLoading }: ChatBodyProps) => {
+export const ChatBody = ({ messages, isLoading, products }: ChatBodyProps) => {
   return (
     <div className="flex-1 overflow-y-auto p-4  relative">
       <div className="space-y-4">
         {messages.map((message, index) => {
-          if (message.rol === 'bot') {
-            return <ChatBotAnswer key={index} text={message.text} />
-          } else if (message.rol === 'user') {
-            return <UserMessage key={index} text={message.text} />
-          } else if (message.text === 'carousel' && message.rol === undefined) {
-            return (
-              <div className="text-black" key={index}>
-                Carousel
-              </div>
-            )
-          }
+          return (
+            <div key={index}>
+              {message.rol === 'bot' && (
+                <ChatBotAnswer key={index} text={message.text} />
+              )}
+              {message.rol === 'user' && (
+                <UserMessage key={index} text={message.text} />
+              )}
+              {message.text === 'carousel' && message.rol === undefined && (
+                <div className="text-black text-[10px]" key={index}>
+                  {products && products[1]?.id}
+                </div>
+              )}
+            </div>
+          )
         })}
         {isLoading && <Dots />}
       </div>

@@ -3,9 +3,12 @@ import { Message } from '../models'
 import { ArrowDown, EmojiIcon } from './icons'
 interface FooterProps {
   addMessage: (text: Message) => void
+  isLoading: boolean
 }
-export const Footer = ({ addMessage }: FooterProps) => {
+export const Footer = ({ addMessage, isLoading }: FooterProps) => {
   const [message, setMessage] = useState<Message>()
+  const keyPhrase = 'I want product recommendations'
+
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage({
       text: e.target.value,
@@ -13,7 +16,11 @@ export const Footer = ({ addMessage }: FooterProps) => {
     })
   }
 
-  const keyPhrase = 'I want product recommendations'
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      updateMessages()
+    }
+  }
   const updateMessages = () => {
     if (message) {
       if (message.text !== keyPhrase) {
@@ -37,7 +44,9 @@ export const Footer = ({ addMessage }: FooterProps) => {
           type="text"
           placeholder="Write a message..."
           value={message?.text || ''}
+          disabled={isLoading}
           onChange={handleTextChange}
+          onKeyPress={handleKeyPress}
           className="flex-1 p-2  rounded-lg focus:outline-none text-black text-sm "
         />
         <button
